@@ -36,12 +36,9 @@
 						</li>
 						<li> <a href="pricing.html"><i class="far fa-money-bill-alt"></i> <span>Pricing</span></a> </li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
-						</li>
-						<li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="invoices.html">Invoices </a></li>
-								<li><a href="payments.html">Payments </a></li>
-								<li><a href="expenses.html">Expenses </a></li>
+            <ul class="submenu_class" style="display: none;">
+								<li><a href="" @click.prevent="showComponent('employee')">List of Employees </a></li>
+                <li><a href="" @click.prevent="showComponent('addEmployee')">Add Employees </a></li>
 							</ul>
 						</li>
 					</ul>
@@ -53,6 +50,8 @@
         <room-table v-if="selectedComponent==='roomTable'"/>
         <booking v-if="selectedComponent==='booking'"/>
         <pending-booking v-if="selectedComponent==='pendingBooking'"/>
+        <employee v-if="selectedComponent==='employee'"/>
+        <add-employee v-if="selectedComponent==='addEmployee'"/>
       </div>
     </div>
 </template>
@@ -66,9 +65,11 @@ import addRoom from '@/components/admin/addRoom.vue';
 import roomTable from '@/components/admin/roomTable.vue';
 import booking from '@/components/admin/booking.vue';
 import pendingBooking from '@/components/admin/pendingBooking.vue';
+import employee from '@/components/admin/employee.vue';
+import addEmployee from '@/components/admin/addEmployee.vue';
 export default {
     name:'Admin',
-    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking},
+    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking,employee,addEmployee},
       data() {
         return {
           selectedComponent: "adminMain"

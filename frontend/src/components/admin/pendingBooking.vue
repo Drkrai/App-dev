@@ -21,6 +21,8 @@
 										<thead>
 											<tr>
 												<th>Room Name</th>
+												<th>Rent</th>
+												<th>Guest Number</th>
 												<th>Time</th>
 												<th>Arrival Date</th>
 												<th>Depature Date</th>
@@ -31,6 +33,8 @@
 										<tbody>
 											<tr v-for="info in info" :key="info.id">
                                                 <td>{{info.roomName}}</td>
+												<td>{{info.rent}}</td>
+												<td>{{info.guest}}</td>
                                                 <td>{{info.time}}</td>
                                                 <td>{{info.arrivalDate}}</td>
                                                 <td>{{info.departureDate}}</td>
@@ -38,8 +42,7 @@
 													<div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> </div>
 												</td>
 												<td class="text-right">
-													<button class="btn btn-success" @click="confirmBooking(info.id)">Admit</button>
-													<button class="btn btn-danger">Deny</button>
+													<button class="btn btn-success" @click="showConfirmationDialog(info.id)">Admit</button>
 												</td>
 											</tr>
 										</tbody>
@@ -63,18 +66,29 @@
 				</div>
 			</div>
 		</div>
+		<confirmation
+		:show="showDialog"
+		message="Are you sure you want to accept this booking?"
+		@confirmed="confirmBooking"
+		@canceled="cancelDialog"
+		>
+		</confirmation>
     </div>
 </template>
 <script>
 import axios from 'axios';  
+import confirmation from './adminConfirmation.vue';
 export default {
     name:'pendingBooking',
+	components:{confirmation},
     created() {
         this.showPendingBooking();
     },
     data() {
         return {
             info:[],
+			showDialog:false,
+			currentBookingId: null,
         }
     },
     methods:{
@@ -82,20 +96,33 @@ export default {
             try {
                 const ins=await axios.get('pending');
                 this.info=ins.data;
+				
             } catch (error) {
                 
             }
         },
 
 
-        async confirmBooking(bookingId){
-            try {
-               const ins=await axios.post(`confirmed-booking/${bookingId}`);
-			   
-            } catch (error) {
-                console.log(error)
+        async confirmBooking(){
+             try {
+            if (this.currentBookingId) {
+                const ins = await axios.post(`confirmed-booking/${this.currentBookingId}`);
+                this.$emit('booking-confirmed');
+                this.showPendingBo2oking();
             }
+        } catch (error) {
+            console.log(error);
+        } finally {
+            this.showDialog = false; // Close the dialog after confirming or if an error occurs
         }
+        },
+		cancelDialog() {
+			this.showDialog = false;
+		},
+	showConfirmationDialog(bookingId) {
+		this.showDialog = true;
+		this.currentBookingId=bookingId
+    	},
     }
 }
 </script>

@@ -93,6 +93,22 @@
 										<textarea class="form-control" rows="5" id="comment" name="text" v-model="description"></textarea>
 									</div>
 								</div>
+								<div class="col-md-4">
+									<div class="form-group">
+										<div class="form-check">
+											<input type="checkbox" class="form-check-input" id="towelCheckbox" v-model="amenities.towel">
+											<label class="form-check-label" for="towelCheckbox">Towel</label>
+										</div>
+										<div class="form-check">
+											<input type="checkbox" class="form-check-input" id="toothbrush" v-model="amenities.toothbrush">
+											<label class="form-check-label" for="toothbrush">Toothbrush</label>
+										</div>
+										<div class="form-check">
+											<input type="checkbox" class="form-check-input" id="facetowel" v-model="amenities.faceTowel">
+											<label class="form-check-label" for="facetowel">Face Towel</label>
+										</div>
+									</div>
+								</div>
 							</div>
 							<button type="submit" class="btn btn-primary buttonedit ml-2">Save</button>
 							<button type="button" class="btn btn-primary buttonedit">Cancel</button>
@@ -118,6 +134,12 @@ export default {
 			numGuest:'',
 			rent:'',
 			description:'',
+			amenities:{
+				towel:false,
+				toothbrush:false,
+				faceTowel:false,
+				handTowel:false,
+			}
 		}
 	},
 	methods: {
@@ -132,6 +154,7 @@ export default {
 					numGuest:this.numGuest,
 					rent:this.rent,
 					description:this.description,
+					amenities:this.amenities
 				});
 				this.roomName="";
 				this.roomType="";

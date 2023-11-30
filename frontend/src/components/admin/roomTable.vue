@@ -26,6 +26,7 @@
 												<th>Guest Allowed</th>
 												<th>Rent</th>
 												<th>Description</th>
+												<th>Status</th>
 												<th class="text-right">Actions</th>
 											</tr>
 										</thead>
@@ -41,6 +42,7 @@
 												<td>{{info.numGuest}}</td>
 												<td>{{info.rent}}</td>
 												<td>{{info.description}}</td>
+												<td>{{info.status}}</td>
 												<td class="text-right">
 													<div class="dropdown dropdown-action"> <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fas fa-ellipsis-v ellipse_color"></i></a>
 														<div class="dropdown-menu dropdown-menu-right"> <a class="dropdown-item" href=""><i class="fas fa-pencil-alt m-r-5"></i> Edit</a> <a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_asset"><i class="fas fa-trash-alt m-r-5"></i> Delete</a> </div>
