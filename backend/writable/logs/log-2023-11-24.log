@@ -1,0 +1,257 @@
+ERROR - 2023-11-24 03:51:29 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:51:29 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:57:55 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:57:55 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:57:57 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:57:57 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:41 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:41 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:43 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:43 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:43 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:43 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:43 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:43 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:43 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:43 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 03:58:51 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-11-24 03:58:51 --> Unknown column 'email' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `users`
+WHERE `email` = :email:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\UserController.php(16): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\UserController->register()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-24 04:00:03 --> mysqli_sql_exception: Unknown column 'email' in 'where clause' in C:\laragon\www\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\backend\app\Controllers\UserController.php(17): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\backend\system\CodeIgniter.php(919): App\Controllers\UserController->register()
+#8 C:\laragon\www\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\UserController))
+#9 C:\laragon\www\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}

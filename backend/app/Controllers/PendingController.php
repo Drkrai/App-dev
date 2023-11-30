@@ -9,11 +9,16 @@ class PendingController extends ResourceController
 {
     public function saveBooking()
     {
+        
         $json=$this->request->getJson();
+        $amenities = $json->amenities ?? [];
         $data=[
-            'name' => $json->roomName,
+            'roomName' => $json->roomName,
             'departureDate' => $json->departureDate,
             'arrivalDate' => $json->arrivalDate,
+            'guest' => $json->guest,
+            'rent'=>$json->rent,
+            'amenities'=>json_encode($amenities),
         ];
         $model= new PendingModel();
         $save=$model->save($data);
@@ -23,6 +28,9 @@ class PendingController extends ResourceController
     public function getPending(){
         $main= new PendingModel();
         $data=$main->findAll();
+        foreach ($data as &$row) {
+            $row['amenities'] = json_decode($row['amenities'], true) ?? [];
+        }
         return $this->respond($data,200);
     }
 }

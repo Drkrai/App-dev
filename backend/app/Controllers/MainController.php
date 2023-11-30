@@ -13,6 +13,7 @@ class MainController extends ResourceController
     public function save()
     {
         $json=$this->request->getJSON();
+        $amenities = $json->amenities ?? [];
         $data=[
             'roomName'=>$json->roomName,
             'roomType'=>$json->roomType,
@@ -22,7 +23,8 @@ class MainController extends ResourceController
             'numGuest'=>$json->numGuest,
             'rent'=>$json->rent,
             'description'=>$json->description,
-            'status' => 'available',
+            'status' => 'Active',
+            'amenities'=>json_encode($amenities),
         ];
         $main=new MainModel();
         $r=$main->save($data);
@@ -36,9 +38,15 @@ class MainController extends ResourceController
 
     public function getRoom(){
         $main=new MainModel();
-        $data=$main->select('roomName')->findAll();
+        $data=$main->select('roomName,rent,amenities')->where('status', 'Active')->findAll();
         return $this->respond($data);
     }
 
-   
+    
+    public function getDataStatus(){
+        $main = new MainModel();
+        $data = $main->where('status', 'Active')->findAll();
+        return $this->respond($data);
+    }
+    
 }

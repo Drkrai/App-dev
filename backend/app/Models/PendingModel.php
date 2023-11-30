@@ -7,13 +7,13 @@ use CodeIgniter\Model;
 class PendingModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'pendingBooking';
+    protected $table            = 'pendingbooking';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['roomName', 'time','arrivalDate', 'departureDate'];
+    protected $allowedFields    = ['roomName', 'time','arrivalDate', 'departureDate','guest','rent','amenities'];
 
     // Dates
     protected $useTimestamps = false;
