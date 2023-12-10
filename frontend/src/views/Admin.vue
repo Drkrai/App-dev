@@ -34,6 +34,11 @@
                 <li><a href="" @click.prevent="showComponent('addEmployee')">Add Employees </a></li>
 							</ul>
 						</li>
+            						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Payment </span> <span class="menu-arrow"></span></a>
+            <ul class="submenu_class" style="display: none;">
+								<li><a href="" @click.prevent="showComponent('payment')">Payment </a></li>
+							</ul>
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -47,6 +52,7 @@
         <add-employee v-if="selectedComponent==='addEmployee'"/>
         <amenities v-if="selectedComponent==='amenities'"/>
         <cancel v-if="selectedComponent==='cancel'"/>
+        <payment v-if="selectedComponent==='payment'"/>
       </div>
     </div>
 </template>
@@ -65,9 +71,10 @@ import employee from '@/components/admin/employee.vue';
 import addEmployee from '@/components/admin/addEmployee.vue';
 import amenities from '@/components/admin/amenities.vue';
 import cancel from '@/components/admin/cancel.vue';
+import payment from '@/components/admin/payment.vue';
 export default {
     name:'Admin',
-    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking,employee,addEmployee,amenities,cancel},
+    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking,employee,addEmployee,amenities,cancel,payment},
       data() {
         return {
           selectedComponent: "adminMain"
