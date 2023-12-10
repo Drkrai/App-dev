@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class PendingModel extends Model
+class AmenityModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'pendingbooking';
-    protected $primaryKey       = 'id';
+    protected $table            = 'amenities';
+    protected $primaryKey       = 'amenities_id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['roomName','user_id', 'time','arrivalDate', 'departureDate','guest','rent'];
+    protected $allowedFields    = ['name', 'price',];
 
     // Dates
     protected $useTimestamps = false;

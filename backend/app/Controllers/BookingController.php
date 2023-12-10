@@ -16,7 +16,6 @@ class BookingController extends ResourceController
             $pendingModel = new PendingModel();
             $bookingModel = new BookingModel();
             $pendingBooking = $pendingModel->find($id);
-            $amenities = $pendingBooking->amenities ?? [];
             if (!$pendingBooking) {
                 return $this->failNotFound();
             } 
@@ -28,7 +27,8 @@ class BookingController extends ResourceController
                 'departureDate' => $pendingBooking['departureDate'],
                 'guest' => $pendingBooking['guest'],
                 'rent' => $pendingBooking['rent'],
-                'amenities'=>json_encode($amenities),
+                'user_id' => $pendingBooking['user_id'],
+                'status' =>'Active',
             ]);
             $roomModel->set('status', 'Booked')->where('roomName', $pendingBooking['roomName'])->update();   
             $pendingModel->delete($id);
@@ -40,18 +40,31 @@ class BookingController extends ResourceController
             return $this->failServerError('Error confirming booking: ' . $e->getMessage());
         }
     }
-    
+        
     
     public function payment($id){
-        $model= new BookingModel();
-        $data= $model->find($id);
-        return $this->respond($data);
+        $model = new BookingModel();
+        $data = $model
+        ->join('users', 'users.user_id = booking.user_id')
+        ->select('booking.*, users.user_id as user_id, users.username as user_name')
+        ->find($id);
+
+    return $this->respond($data);
     }
     
     public function getBooking() {
     
             $main= new BookingModel();
-            $data= $main->findAll();
+            $data = $main
+            ->join('users', 'users.user_id = booking.user_id')
+            ->select('booking.*,users.user_id as user_id, users.username as user_name')
+            ->findAll();
             return $this->respond($data);
+    }
+
+    public function getUserBookings($userId) {
+    $bookingModel=new BookingModel();
+    $bookings = $bookingModel->where('user_id', $userId)->findAll();
+    return $this->respond($bookings,200);
     }
 }
