@@ -5,6 +5,7 @@
         <UserMenu/>
         <BookingHome/>
         <Mainbooking/>
+        <Rooms/>
         <UserFooter/>
         </div>
     </div>
@@ -72,4 +73,5 @@ export default {
     @import'@/assets/styles/booking_responsive.css';
     @import'@/assets/styles/responsive.css';
     @import'@/assets/styles/bootstrap-4.1.2/bootstrap.min.css';
+
 </style>

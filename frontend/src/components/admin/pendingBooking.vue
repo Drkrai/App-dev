@@ -6,7 +6,7 @@
 					<div class="row align-items-center">
 						<div class="col">
 							<div class="mt-5">
-								<h4 class="card-title float-left mt-2">Appointments</h4>
+								<h4 class="card-title float-left mt-2">Pending Booking</h4>
                                
                             </div>
 						</div>
@@ -21,11 +21,12 @@
 										<thead>
 											<tr>
 												<th>Room Name</th>
+												<th>User Name</th>
 												<th>Rent</th>
 												<th>Guest Number</th>
 												<th>Time</th>
 												<th>Arrival Date</th>
-												<th>Depature Date</th>
+												<th>Depature Date</th>	
 												<th>Status</th>
 												<th class="text-right">Actions</th>
 											</tr>
@@ -33,6 +34,7 @@
 										<tbody>
 											<tr v-for="info in info" :key="info.id">
                                                 <td>{{info.roomName}}</td>
+												<td>{{info.user_id}}</td>
 												<td>{{info.rent}}</td>
 												<td>{{info.guest}}</td>
                                                 <td>{{info.time}}</td>
@@ -42,7 +44,8 @@
 													<div class="actions"> <a href="#" class="btn btn-sm bg-success-light mr-2">Active</a> </div>
 												</td>
 												<td class="text-right">
-													<button class="btn btn-success" @click="showConfirmationDialog(info.id)">Admit</button>
+													<button class="btn btn-success" @click="showConfirmation(info.id)">Admit</button>
+													<button class="btn btn-danger" @click="showDeleteModal(info.id)">Deny</button>
 												</td>
 											</tr>
 										</tbody>
@@ -67,28 +70,43 @@
 			</div>
 		</div>
 		<confirmation
-		:show="showDialog"
+		:show="showAccept"
 		message="Are you sure you want to accept this booking?"
 		@confirmed="confirmBooking"
 		@canceled="cancelDialog"
 		>
 		</confirmation>
+
+		<deleteModal
+		:show="showDelete"
+		message="Are you sure you want to deny this booking?"
+		@confirmed="deletePending"
+		@canceled="cancelDelete"
+		>
+
+		</deleteModal>
+
+
     </div>
 </template>
 <script>
 import axios from 'axios';  
 import confirmation from './adminConfirmation.vue';
+import deleteModal from './delete.vue';
 export default {
     name:'pendingBooking',
-	components:{confirmation},
+	components:{confirmation,deleteModal},
     created() {
         this.showPendingBooking();
+
     },
     data() {
         return {
             info:[],
-			showDialog:false,
+			showDelete:false,
 			currentBookingId: null,
+			deleteID:null,
+			showAccept:false,
         }
     },
     methods:{
@@ -101,14 +119,25 @@ export default {
                 
             }
         },
-
-
+		async deletePending(){
+			try {
+				if (this.deleteID) {
+					const ins= await axios.post(`delete-pending/${this.deleteID}`)
+					this.showPendingBookings()
+				}
+			} catch (error) {
+				console.error(error)
+			}
+			finally {
+            this.showDelete = false; // Close the dialog after confirming or if an error occurs
+        }
+		},
         async confirmBooking(){
              try {
             if (this.currentBookingId) {
                 const ins = await axios.post(`confirmed-booking/${this.currentBookingId}`);
                 this.$emit('booking-confirmed');
-                this.showPendingBo2oking();
+                this.showPendingBooking();
             }
         } catch (error) {
             console.log(error);
@@ -117,12 +146,26 @@ export default {
         }
         },
 		cancelDialog() {
-			this.showDialog = false;
+			this.showAccept = false;
 		},
-	showConfirmationDialog(bookingId) {
-		this.showDialog = true;
+	showConfirmation(bookingId) {
+		this.showAccept = true;
 		this.currentBookingId=bookingId
     	},
+
+	showDeleteModal(bookingId) {
+		try {
+		this.showDelete = true;
+		this.deleteID=bookingId
+		} catch (error) {
+			console.log(error);
+		}
+
+    	},
+	cancelDelete() {
+			this.showDelete = false;
+		},
+		
     }
 }
 </script>
