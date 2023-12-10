@@ -13,7 +13,6 @@ class MainController extends ResourceController
     public function save()
     {
         $json=$this->request->getJSON();
-        $amenities = $json->amenities ?? [];
         $data=[
             'roomName'=>$json->roomName,
             'roomType'=>$json->roomType,
@@ -24,7 +23,6 @@ class MainController extends ResourceController
             'rent'=>$json->rent,
             'description'=>$json->description,
             'status' => 'Active',
-            'amenities'=>json_encode($amenities),
         ];
         $main=new MainModel();
         $r=$main->save($data);
@@ -38,7 +36,7 @@ class MainController extends ResourceController
 
     public function getRoom(){
         $main=new MainModel();
-        $data=$main->select('roomName,rent,amenities')->where('status', 'Active')->findAll();
+        $data=$main->select('roomName,rent')->where('status', 'Active')->findAll();
         return $this->respond($data);
     }
 
@@ -47,6 +45,42 @@ class MainController extends ResourceController
         $main = new MainModel();
         $data = $main->where('status', 'Active')->findAll();
         return $this->respond($data);
+    }
+
+    public function updateRoom($id){
+        try {
+            $main= new MainModel();
+        $post=$this->request->getJson();
+        $save = [
+            'roomName' => $post->roomName,
+            'roomType' => $post->roomType,
+            'ac' => $post->ac,
+            'food' => $post->food,
+            'cancelCharge' => $post->cancelCharge,
+            'numGuest' => $post->numGuest,
+            'rent' => $post->rent,
+            'description' => $post->description,
+        ];
+
+        $s = $main->update($id, $save);
+        return $this->respond($s,200);
+        } catch (\Throwable $th) {
+            echo $th;
+        }
+
+        
+    }
+    public function getTotalBookings()
+    {
+        $bookingModel = new BookingModel(); 
+        $totalBookings = $bookingModel->countAll();
+
+        return $this->respond($totalBookings);
+    }
+    public function getAvailRoom(){
+        $room = new MainModel();
+        $availRoom= $room->where('status','Active')->countAllResults();
+        return $this->respond($availRoom);
     }
     
 }
