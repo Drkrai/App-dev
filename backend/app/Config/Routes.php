@@ -31,3 +31,4 @@ $routes->post('/cancel-booking', 'CancelController::saveCancel');
 $routes->get('/get-cancel', 'CancelController::getcancel');
 $routes->post('/booking-cancel/(:num)', 'CancelController::cancelBooking/$1');
 $routes->post('/delete-rooms/(:num)', 'MainController::deleteRoom/$1');
+$routes->get('/showpayment', 'PaymentController::getPay');

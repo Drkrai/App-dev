@@ -68,5 +68,11 @@ class PaymentController extends ResourceController
         }
     }
     
-    
+    public function getPay(){
+        $main= new PaymentModel();
+        $data=$main->join('users', 'users.user_id = payment.user_id')
+        ->select('payment.*,users.user_id as user_id, users.username as user_name')
+        ->findAll();
+        return $this->respond($data,200);
+    }
 }
