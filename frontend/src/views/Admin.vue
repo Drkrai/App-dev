@@ -6,20 +6,15 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul >
-						<li class="active"> <a href="#"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+						<li class="active"> <a @click.prevent="showComponent('adminMain')"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
 						<li class="list-divider"></li>
 						<li class="submenu"> <a href=""><i class="fas fa-suitcase"></i> <span> Booking </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
 								<li > 
                   <a href="" @click.prevent="showComponent('booking')">All Bookings</a>
                   <a href="" @click.prevent="showComponent('pendingBooking')">Pending Bookings</a>
+                  <a href="" @click.prevent="showComponent('cancel')">Cancellations</a>
 								</li>
-							</ul>
-						</li>
-						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Customers </span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-customer.html"> All customers </a></li>
-								<li><a href="add-customer.html"> Add Customer </a></li>
 							</ul>
 						</li>
 						<li class="submenu" > <a href="#"><i class="fas fa-key" ></i> <span> Rooms </span> <span class="menu-arrow"></span></a>
@@ -28,20 +23,15 @@
 								<li><a href="" @click.prevent="showComponent('addRoom')">Add Room</a></li>
 							</ul>
 						</li>
-						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Staff </span> <span class="menu-arrow"></span></a>
+            <li class="submenu" > <a href="#"><i class="fas fa-archive" ></i> <span> Amenities </span> <span class="menu-arrow"></span></a>
 							<ul class="submenu_class" style="display: none;">
-								<li><a href="all-staff.html">All Staff </a></li>
-								<li><a href="add-staff.html"> Add Staff </a></li>
+								<li><a href="" @click.prevent="showComponent('amenities')">All Amenities</a></li>
 							</ul>
 						</li>
-						<li> <a href="pricing.html"><i class="far fa-money-bill-alt"></i> <span>Pricing</span></a> </li>
 						<li class="submenu"> <a href="#"><i class="fas fa-user"></i> <span> Employees </span> <span class="menu-arrow"></span></a>
-						</li>
-						<li class="submenu"> <a href="#"><i class="far fa-money-bill-alt"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-							<ul class="submenu_class" style="display: none;">
-								<li><a href="invoices.html">Invoices </a></li>
-								<li><a href="payments.html">Payments </a></li>
-								<li><a href="expenses.html">Expenses </a></li>
+            <ul class="submenu_class" style="display: none;">
+								<li><a href="" @click.prevent="showComponent('employee')">List of Employees </a></li>
+                <li><a href="" @click.prevent="showComponent('addEmployee')">Add Employees </a></li>
 							</ul>
 						</li>
 					</ul>
@@ -53,10 +43,15 @@
         <room-table v-if="selectedComponent==='roomTable'"/>
         <booking v-if="selectedComponent==='booking'"/>
         <pending-booking v-if="selectedComponent==='pendingBooking'"/>
+        <employee v-if="selectedComponent==='employee'"/>
+        <add-employee v-if="selectedComponent==='addEmployee'"/>
+        <amenities v-if="selectedComponent==='amenities'"/>
+        <cancel v-if="selectedComponent==='cancel'"/>
       </div>
     </div>
 </template>
 <script>
+
 import {ref} from 'vue';
 import { onMounted } from 'vue'
 import adminMain from '@/components/admin/adminMain.vue';
@@ -66,9 +61,13 @@ import addRoom from '@/components/admin/addRoom.vue';
 import roomTable from '@/components/admin/roomTable.vue';
 import booking from '@/components/admin/booking.vue';
 import pendingBooking from '@/components/admin/pendingBooking.vue';
+import employee from '@/components/admin/employee.vue';
+import addEmployee from '@/components/admin/addEmployee.vue';
+import amenities from '@/components/admin/amenities.vue';
+import cancel from '@/components/admin/cancel.vue';
 export default {
     name:'Admin',
-    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking},
+    components:{adminMain,adminSide,adminHeader,addRoom,roomTable,booking,pendingBooking,employee,addEmployee,amenities,cancel},
       data() {
         return {
           selectedComponent: "adminMain"
