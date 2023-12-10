@@ -17,16 +17,16 @@
 											<div><input type="date" class="booking_input booking_input_a booking_in" placeholder="Check in" required="required" v-model="arrivalDate"></div>
 											<div><input type="date" class="booking_input booking_input_a booking_out" placeholder="Check out" required="required" v-model="departureDate"></div>
 											<div><input type="number" class="booking_input booking_input_b" placeholder="Guest Number" required="required" v-model="guest"></div>
-											<div>
-											<select class="booking_input booking_input_b" required="required" v-model="roomName" @change="updateRent">
-												<option value="" disabled selected >Select Room</option>
-												<option v-for="info in info" :key="info.id">{{info.roomName}}</option>
-											</select>
-											</div>
-											<div><input type="hidden" v-model="rent"><input type="hidden" v-model="amenities" /></div>
+												<div>
+												<select class="booking_input booking_input_b" required="required" v-model="roomName" @change="updateRent">
+													<option value="" disabled selected >Select Room</option>
+													<option v-for="info in info" :key="info.id">{{info.roomName}}</option>
+												</select>
+												</div>
+											<div><input type="hidden" v-model="rent"></div>
 											
 										</div>
-										<div><button class="booking_button trans_200">Book Now</button></div>
+										<div v-if="isLoggedIn"><button class="booking_button trans_200">Book Now</button></div>
 									</div>
 								</form>
 							</div>
@@ -39,6 +39,7 @@
 	<confirmation
 		:show="showDialog"
       message="Are you sure you want to book?"
+	  :selectedOptions="selectedOptions"
       @confirmed="savePendingBooking"
       @canceled="cancelBooking"
 	>
@@ -48,6 +49,7 @@
 <script>
 import axios from "axios";
 import Confirmation from './Confirmation.vue';
+import {showNotification} from '../Notification';
 export default {
     name:'BookingHome',
 	components: {Confirmation},
@@ -61,14 +63,24 @@ export default {
 			guest:'',
 			rent:'',
 			showDialog:false,
-			amenities:''
+			selectedOptions:{
+				arrivalDate: '',
+				departureDate: '',
+				guest: '',
+				roomName: '',
+				rent: '',
+			},
+			isLoggedIn:false
 		}
 	},
 	created() {
 		this.get();
+    	this.isLoggedIn = localStorage.getItem("user_id") !== null;
 	},
 	methods:{
 		showConfirmationDialog() {
+			this.selectedOptions={roomName:this.roomName,arrivalDate:this.arrivalDate,departureDate:this.departureDate,guest:this.guest,rent:this.rent}
+	  console.log('Selected Options:', this.selectedOptions);
       this.showDialog = true;
     	},
 		async get(){
@@ -77,7 +89,7 @@ export default {
 				this.info = ins.data.filter(room => room.status === 'Active').map(room => ({
 				roomName: room.roomName,
 				rent: room.rent,
-				amenities: JSON.parse(room.amenities), // Parse JSON string to object
+
 			}));
             } catch (error) {
                 
@@ -86,42 +98,44 @@ export default {
 		async savePendingBooking(){
 			this.showDialog=false;
 			try {
+				const userId = localStorage.getItem('user_id');
 				const ins= await axios.post('bookRoom',{
 					roomName:this.roomName,
 					arrivalDate:this.arrivalDate,
 					departureDate:this.departureDate,
 					guest:this.guest,
 					rent:this.rent,
-					amenities:this.amenities
-				});
+					user_id:userId
+					
+				}
+				);
+				    this.roomName = '';
+					this.arrivalDate = '';
+					this.departureDate = '';
+					this.guest = '';
+					this.rent = '';
+				showNotification('Reservation successful', 'success');
 			} catch (error) {
 				
 			}
 		
 		},
-		async checkRoomName(){
-			console.log(this.roomName)
-		},
 		cancelBooking() {
       this.showDialog = false;
     },
-	updateRent() {
-            // Find the selected room and update the rent value
+		updateRent() {
             const selectedRoom = this.info.find(room => room.roomName === this.roomName);
             if (selectedRoom) {
                 this.rent = selectedRoom.rent; 
-				this.amenities = JSON.stringify(selectedRoom.amenities);
             }
-		
-	}
+		},
 }
 }
 </script>
 
 <style lang="css">
 	.booking_input_b option {
-    color: #333; /* Change the color of the text */
-    background-color: #fff; /* Change the background color */
-    /* Add any other styles you want to apply to the options */
+    color: #333; 
+    background-color: #fff;
 }
 </style>
