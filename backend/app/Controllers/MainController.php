@@ -82,5 +82,11 @@ class MainController extends ResourceController
         $availRoom= $room->where('status','Active')->countAllResults();
         return $this->respond($availRoom);
     }
-    
+    public function deleteRoom($id){
+        $pending= new MainModel();
+        if (!$id) {
+            return $this->failNotFound();
+        }
+        $pending->delete($id);
+    }
 }
